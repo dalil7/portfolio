@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dalil Aitchaib | Portfolio BTS SIO</title>
+  <meta name="description" content="Portfolio E5 BTS SIO SLAM - Dalil Aitchaib. Développeur Python, Data & Fullstack.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- VARIABLES & RESET --- */
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-card: #171717;
+      --accent: #6366f1; /* Indigo */
+      --accent-glow: rgba(99, 102, 241, 0.4);
+      --text-main: #ededed;
+      --text-muted: #a1a1aa;
+      --border: rgba(255, 255, 255, 0.1);
+      --orange-brand: #f97316;
+      --sg-brand: #e11d48;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(225, 29, 72, 0.08), transparent 25%);
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* --- TYPOGRAPHY --- */
+    h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; }
+    h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 20px; }
+    h2 { font-size: 2rem; margin-bottom: 10px; }
+    p { color: var(--text-muted); font-size: 1.05rem; }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--accent); }
+
+    /* --- LAYOUT --- */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    section:last-child { border-bottom: none; }
+
+    /* --- NAVBAR --- */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      height: 70px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -1px; }
+    .logo span { color: var(--accent); }
+    
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--text-main); }
+    .nav-btn {
+      background: var(--text-main); color: var(--bg-dark);
+      padding: 8px 16px; border-radius: 8px; font-weight: 700;
+    }
+    .nav-btn:hover { background: var(--accent); color: white; }
+
+    /* --- HERO --- */
+    .hero { padding-top: 180px; padding-bottom: 100px; text-align: center; max-width: 800px; margin: 0 auto; }
+    .badge {
+      display: inline-block; padding: 6px 16px; border-radius: 50px;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border);
+      font-size: 0.85rem; font-weight: 600; margin-bottom: 25px;
+    }
+    .hero-btns { margin-top: 40px; display: flex; gap: 15px; justify-content: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 24px; border-radius: 12px; font-weight: 600;
+      transition: all 0.3s ease; border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--accent); color: white; box-shadow: 0 0 20px var(--accent-glow); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 30px var(--accent-glow); }
+    .btn-secondary { background: rgba(255,255,255,0.05); border-color: var(--border); }
+    .btn-secondary:hover { border-color: var(--text-muted); background: rgba(255,255,255,0.1); }
+
+    /* --- CARDS (Projets & Stages) --- */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; margin-top: 40px; }
+    
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 30px; display: flex; flex-direction: column;
+      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative; overflow: hidden; height: 100%;
+    }
+    .card:hover { transform: translateY(-8px); border-color: var(--accent); }
+    
+    .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .folder-icon { font-size: 2rem; color: var(--text-muted); display: flex; align-items: center; }
+    .card:hover .folder-icon { color: var(--accent); }
+
+    .company-logo { width: 45px; height: 45px; object-fit: contain; border-radius: 8px; }
+    
+    .card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+    .card-desc { font-size: 0.95rem; margin-bottom: 25px; flex-grow: 1; }
+    
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+    .tech-tag { font-size: 0.75rem; font-family: 'JetBrains Mono'; color: var(--text-muted); }
+    .card.featured-orange { border-top: 4px solid var(--orange-brand); }
+    .card.featured-sg { border-top: 4px solid var(--sg-brand); }
+
+    /* --- SKILLS TABLE --- */
+    .matrix-wrapper {
+      background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border);
+      overflow: hidden; margin-top: 40px;
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 600px; }
+    th { text-align: left; padding: 20px; background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; }
+    td { padding: 20px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    .skill-name { font-weight: 700; color: var(--text-main); display: block; margin-bottom: 5px; }
+    .context-tag { 
+      font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 4px; 
+      text-transform: uppercase; display: inline-block; margin-top: 5px;
+    }
+    .ctx-orange { background: rgba(249, 115, 22, 0.15); color: var(--orange-brand); }
+    .ctx-sg { background: rgba(225, 29, 72, 0.15); color: var(--sg-brand); }
+    .ctx-school { background: rgba(99, 102, 241, 0.15); color: var(--accent); }
+
+    /* --- TIMELINE (VEILLE) --- */
+    .timeline { position: relative; max-width: 900px; margin: 40px auto 0; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; height: 100%;
+      width: 2px; background: var(--border);
+    }
+    .timeline-item { position: relative; padding-left: 40px; margin-bottom: 50px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    
+    .timeline-dot {
+      position: absolute; left: -5px; top: 0; width: 12px; height: 12px;
+      background: var(--accent); border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+    
+    .timeline-date {
+      font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--accent);
+      margin-bottom: 8px; display: block;
+    }
+    
+    .timeline-content {
+      background: var(--bg-card); padding: 25px; border-radius: 12px;
+      border: 1px solid var(--border); transition: 0.3s;
+    }
+    .timeline-content:hover { border-color: var(--accent); transform: translateX(5px); }
+    .timeline-content h3 { font-size: 1.1rem; margin-bottom: 10px; }
+    .timeline-source {
+      display: inline-block; margin-top: 15px; font-size: 0.75rem;
+      color: var(--text-muted); font-style: italic; border-top: 1px solid var(--border);
+      padding-top: 10px; width: 100%;
+    }
+
+    /* --- FOOTER --- */
+    footer { padding: 50px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
+
+    /* --- RESPONSIVE --- */
+    @media(max-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      .nav-links { display: none; }
+      .matrix-wrapper { overflow-x: auto; }
+      .timeline::before { left: 10px; }
+      .timeline-dot { left: 5px; }
+      .timeline-item { padding-left: 35px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="logo">DALIL<span>.A</span></a>
+      <div class="nav-links">
+        <a href="#stages">Expériences</a>
+        <a href="#projets">Projets</a>
+        <a href="#competences">Compétences E5</a>
+        <a href="#veille">Veille E6</a>
+      </div>
+      <a href="CV_Dalil_Aitchaib.pdf" target="_blank" class="nav-btn">Mon CV</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <span class="badge"><i class="fas fa-code"></i> BTS SIO SLAM — Session 2026</span>
+      <h1>Développeur Fullstack <br /> & <span style="color:var(--accent)">Data Analyst.</span></h1>
+      <p>
+        Étudiant passionné par l'automatisation Python et l'Intelligence Artificielle.
+        J'ai conçu des solutions critiques pour la <b>Société Générale</b> et <b>Orange</b>.
+      </p>
+      
+      <div class="hero-btns">
+        <a href="#stages" class="btn btn-primary">
+          Voir mes réalisations <i class="fas fa-arrow-down"></i>
+        </a>
+        <a href="Tableau_Synthese_E4_Dalil.pdf" target="_blank" class="btn btn-secondary">
+          <i class="fas fa-file-pdf"></i> Tableau de Synthèse E4
+        </a>
+      </div>
+    </section>
+
+    <section id="stages">
+      <div style="display:flex; justify-content:space-between; align-items:end; margin-bottom:40px;">
+        <div>
+          <h2>Stages en Entreprise</h2>
+          <p>Missions réalisées en environnements techniques exigeants.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card featured-orange">
+          <div class="card-top">
+            <div class="folder-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg" alt="Logo Orange" class="company-logo">
+            </div>
+            <a href="Doc_Technique_Orange.pdf" title="Voir la documentation"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+          <span class="mono" style="color:var(--orange-brand);">ORANGE - FACTORY IA</span>
+          <h3>Script de Classification par IA</h3>
+          <p class="card-desc">
+            Développement d'un <strong>script de classification d'images</strong> grâce au Machine Learning. Entraînement de modèles pour automatiser le tri visuel et optimiser les processus.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">Agile</span>
+          </div>
+        </article>
+
+        <article class="card featured-sg">
+          <div class="card-top">
+            <div class="folder-icon">
+                <img src="https://logo-marque.com/wp-content/uploads/2021/03/Societe-Generale-Embleme-650x366.jpg" alt="Logo Société Générale" class="company-logo" style="background:white; padding:4px;">
+            </div>
+            <a href="Doc_Technique_SG.pdf" title="Voir la documentation"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+          <span class="mono" style="color:var(--sg-brand);">SOCIÉTÉ GÉNÉRALE (DSI)</span>
+          <h3>Automatisation & Portail Data</h3>
+          <p class="card-desc">
+            Création d'un <strong>script d'automatisation Python</strong> pour accéder facilement aux données. Implémentation ensuite dans un <strong>site interne</strong> pour faciliter l'accès et l'utilisation de ce service par les équipes.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Automatisation</span>
+            <span class="tech-tag">Intégration Web</span>
+            <span class="tech-tag">Service Interne</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projets">
+      <h2>Projets Académiques</h2>
+      <p>Applications développées durant le cursus BTS SIO.</p>
+      
+      <div class="grid">
+        <article class="card">
+          <div class="card-top">
+            <div class="folder-icon"><i class="fas fa-shopping-bag"></i></div>
+            <a href="https://github.com/Dalil/woodycraft" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+          <h3>WoodyCraft</h3>
+          <p class="card-desc">
+            Site e-commerce de vente de puzzles 3D. Conception d'une interface responsive et d'un tunnel d'achat ergonomique.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">Laravel</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">Tailwind</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <div class="folder-icon"><i class="fas fa-play-circle"></i></div>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+          <h3>Netflux</h3>
+          <p class="card-desc">
+            Plateforme de streaming vidéo type Netflix. Architecture MVC maison avec une interface utilisateur dynamique pour la gestion des contenus.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">PHP (MVC)</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Auth</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="competences">
+      <h2>Validation des Compétences </h2>
+      <p>Couverture du référentiel BTS SIO SLAM via mes réalisations.</p>
+      
+      <div class="matrix-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th width="30%">Compétence</th>
+              <th width="50%">Réalisation & Preuve</th>
+              <th width="20%">Contexte</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="skill-name">Gérer le patrimoine informatique</span></td>
+              <td>Script Python d'automatisation pour simplifier et sécuriser l'accès aux données.</td>
+              <td><span class="context-tag ctx-sg">Société Générale</span></td>
+            </tr>
+            <tr>
+              <td><span class="skill-name">Répondre aux incidents</span></td>
+              <td>Maintenance et correction d'erreurs lors de l'entraînement des modèles IA.</td>
+              <td><span class="context-tag ctx-orange">Orange</span></td>
+            </tr>
+            <tr>
+              <td><span class="skill-name">Développer la présence en ligne</span></td>
+              <td>Conception d'une interface utilisateur responsive et ergonomique pour valoriser le catalogue produits sur le web.</td>
+              <td><span class="context-tag ctx-school">WoodyCraft</span></td>
+            </tr>
+            <tr>
+              <td><span class="skill-name">Travailler en mode projet</span></td>
+              <td>Collaboration en méthode Agile et utilisation de Jira/teams pour la gestion des tâches.</td>
+              <td><span class="context-tag ctx-orange">Orange</span></td><td><span class="context-tag ctx-sg">Société Générale</span></td>
+            </tr>
+            <tr>
+              <td><span class="skill-name">Mettre à disposition des services</span></td>
+              <td>Implémentation du script Python dans un outil web interne pour faciliter son utilisation par les équipes.</td>
+              <td><span class="context-tag ctx-sg">Société Générale</span></td>
+            </tr>
+            <tr>
+              <td><span class="skill-name">Organiser son développement pro</span></td>
+              <td>Auto-formation sur le concept d'IA pour mener à bien la classification d'images.</td>
+              <td><span class="context-tag ctx-orange">Orange</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="veille">
+      <div style="margin-bottom:30px;">
+        <h2>Veille Technologique </h2>
+        <p>Sujet : <strong style="color:var(--text-main)">L'Intelligence Artificielle dans les Jeux Vidéo</strong></p>
+        <p style="font-size:0.9rem; margin-top:5px;">Outil de veille : <span class="mono" style="color:var(--accent); background:rgba(99,102,241,0.1); padding:4px 8px; border-radius:4px;">Google Alerts</span></p>
+      </div>
+
+      <div class="timeline">
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-date">16 AVRIL 2025</span>
+          <div class="timeline-content">
+            <h3>Les "Co-Playable Characters" (CPC) par KRAFTON x NVIDIA</h3>
+            <p>Présentation au CES 2025 d'une nouvelle génération de personnages IA capables de coopérer et communiquer en temps réel avec les joueurs (ex: PUBG). Utilisation de modèles de langage (SLM) locaux pour la confidentialité.</p>
+            <span class="timeline-source"><i class="fas fa-rss"></i> Source : CES 2025 / Annonce Officielle KRAFTON</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-date">02 AVRIL 2025</span>
+          <div class="timeline-content">
+            <h3>Débat Éthique : IA vs Style Artistique Humain</h3>
+            <p>Critique de l'usage de l'IA pour imiter des styles comme Ghibli. L'article soulève que si l'IA peut reproduire l'esthétique, elle manque de l'intention et de la profondeur émotionnelle d'un créateur humain.</p>
+            <span class="timeline-source"><i class="fas fa-rss"></i> Source : Article Critique / Blog spécialisé</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-date">26 MARS 2025</span>
+          <div class="timeline-content">
+            <h3>L'IA Générative transforme les métiers du Jeu Vidéo</h3>
+            <p>Analyse de l'impact sur la productivité (scénarios, adaptation de difficulté, détection de comportements toxiques). Mise en garde sur la transformation profonde des métiers artistiques (2D/3D).</p>
+            <span class="timeline-source"><i class="fas fa-rss"></i> Source : Journal du Net (JDN)</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-date">12 MARS 2025</span>
+          <div class="timeline-content">
+            <h3>Éducation Financière et Gaming via l'IA</h3>
+            <p>Lancement de la plateforme "TwoPlus1" par LAMY. L'IA est utilisée pour personnaliser l'apprentissage du trading dans un environnement ludique. Prévision de forte croissance en Europe et Asie.</p>
+            <span class="timeline-source"><i class="fas fa-rss"></i> Source : LAMY (OTC:LMMY)</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-date">17 FÉVRIER 2025</span>
+          <div class="timeline-content">
+            <h3>Partenariat Astra Nova x Epic Games</h3>
+            <p>Intégration de l'IA et de la Blockchain Web3 pour créer des PNJ capables d'apprendre et de s'adapter aux joueurs. Vers une propriété réelle des actifs en jeu.</p>
+            <span class="timeline-source"><i class="fas fa-rss"></i> Source : Cryptopolitan</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <span class="timeline-date">12 FÉVRIER 2025</span>
+          <div class="timeline-content">
+            <h3>Vision de Take-Two Interactive sur l'IA</h3>
+            <p>Strauss Zelnick (PDG) affirme que l'IA ne remplacera pas la créativité humaine mais l'amplifiera. Focus sur l'optimisation des processus et l'enrichissement de l'expérience joueur.</p>
+            <span class="timeline-source"><i class="fas fa-rss"></i> Source : Gamekult</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Dalil Aitchaib &copy; 2026 — Portfolio épreuve E5 BTS SIO.</p>
+      <div style="margin-top: 10px; font-size: 1.5rem;">
+        <a href="#" style="margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+        <a href="#" style="margin: 0 10px;"><i class="fab fa-github"></i></a>
+        <a href="mailto:dalil.aitchaib@email.com" style="margin: 0 10px;"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
