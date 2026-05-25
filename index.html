@@ -373,6 +373,93 @@
     .certif-kpi-lbl { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
 
     @media(max-width:768px) { .hero h1{font-size:2.5rem} .grid{grid-template-columns:1fr} .certif-grid{grid-template-columns:1fr} .cnil-modules{grid-template-columns:1fr} }
+
+    /* ── CERTIF DOC CARDS ─────────────────────────── */
+    .certif-doc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media(max-width:1000px){ .certif-doc-grid{ grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:640px) { .certif-doc-grid{ grid-template-columns: 1fr; } }
+
+    .certif-doc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .certif-doc-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      border-color: rgba(99,102,241,0.4);
+    }
+
+    .certif-doc-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      border: 1px solid;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .certif-doc-badge {
+      position: absolute;
+      top: 20px; right: 20px;
+      font-size: 0.68rem; font-weight: 800;
+      padding: 4px 10px; border-radius: 50px;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .status-ok  { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+    .status-wip { background: rgba(217,119,6,0.15);  color: #d97706; border: 1px solid rgba(217,119,6,0.3); }
+
+    .certif-doc-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+    .certif-doc-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .certif-doc-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 20px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .certif-doc-meta span {
+      display: flex; align-items: center; gap: 7px;
+    }
+    .certif-doc-btn {
+      margin-top: auto;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 11px 0;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-main);
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+    .certif-doc-btn:hover {
+      background: rgba(99,102,241,0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -576,236 +663,143 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION CERTIFICATIONS
-  ═══════════════════════════════════════════ -->
+  <!-- SECTION CERTIFICATIONS -->
   <section id="certifications" class="container">
-    <div style="margin-bottom:10px;" data-aos="fade-right">
+    <div style="margin-bottom:48px;" data-aos="fade-right">
       <h2>Certifications</h2>
-      <p style="color:var(--text-muted); margin-bottom:36px;">Parcours de certification — compétences validées et vérifiables.</p>
+      <p style="color:var(--text-muted); margin-top:8px;">Compétences validées et vérifiables — cliquez sur "Voir le document" pour accéder à l'attestation officielle.</p>
     </div>
 
-    <!-- KPI résumé -->
-    <div class="certif-summary" data-aos="fade-up">
-      <div class="certif-kpi">
-        <span class="certif-kpi-val" style="color:var(--accent)">4</span>
-        <div class="certif-kpi-lbl">Certifications</div>
+    <div class="certif-doc-grid">
+
+      <!-- AZ-900 -->
+      <div class="certif-doc-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="certif-doc-icon" style="background:rgba(37,99,235,0.12); border-color:rgba(37,99,235,0.25);">
+          <i class="fas fa-cloud" style="color:#2563eb;"></i>
+        </div>
+        <div class="certif-doc-badge status-wip">En cours</div>
+        <h3 class="certif-doc-name">AZ-900</h3>
+        <p class="certif-doc-sub">Microsoft Azure Fundamentals</p>
+        <div class="certif-doc-meta">
+          <span><i class="fas fa-building"></i> Microsoft</span>
+          <span><i class="fas fa-star" style="color:#d97706;"></i> ~165 €</span>
+        </div>
+        <a href="docs/az900.pdf" target="_blank" class="certif-doc-btn" style="opacity:0.5; pointer-events:none; cursor:not-allowed;">
+          <i class="fas fa-clock"></i> En préparation
+        </a>
       </div>
-      <div class="certif-kpi">
-        <span class="certif-kpi-val" style="color:var(--cert-rootme)">200</span>
-        <div class="certif-kpi-lbl">pts Root Me</div>
+
+      <!-- Root Me -->
+      <div class="certif-doc-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="certif-doc-icon" style="background:rgba(34,197,94,0.12); border-color:rgba(34,197,94,0.25);">
+          <i class="fas fa-terminal" style="color:#22c55e;"></i>
+        </div>
+        <div class="certif-doc-badge status-ok">Validé</div>
+        <h3 class="certif-doc-name">Root Me</h3>
+        <p class="certif-doc-sub">Cybersécurité & Hacking éthique</p>
+        <div class="certif-doc-meta">
+          <span><i class="fas fa-trophy" style="color:#22c55e;"></i> 200 pts</span>
+          <span><i class="fas fa-check-circle" style="color:#22c55e;"></i> 15 challenges · 100%</span>
+        </div>
+        <a href="https://www.root-me.org/AITCHAIB-Dalil" target="_blank" class="certif-doc-btn" style="background:rgba(34,197,94,0.1); border-color:rgba(34,197,94,0.3); color:#22c55e;">
+          <i class="fas fa-eye"></i> Voir le profil
+        </a>
       </div>
-      <div class="certif-kpi">
-        <span class="certif-kpi-val" style="color:var(--cert-pix)">604</span>
-        <div class="certif-kpi-lbl">pts PIX / 895</div>
+
+      <!-- PIX -->
+      <div class="certif-doc-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="certif-doc-icon" style="background:rgba(217,119,6,0.12); border-color:rgba(217,119,6,0.25);">
+          <i class="fas fa-medal" style="color:#d97706;"></i>
+        </div>
+        <div class="certif-doc-badge status-ok">Validé</div>
+        <h3 class="certif-doc-name">Certification PIX</h3>
+        <p class="certif-doc-sub">604 / 895 pts · Niveau Avancé 1</p>
+        <div class="certif-doc-meta">
+          <span><i class="fas fa-calendar"></i> 30/03/2026</span>
+          <span><i class="fas fa-school"></i> Lycée Georges Brassens</span>
+        </div>
+        <a href="certification-pix-20260330.pdf" target="_blank" class="certif-doc-btn" style="background:rgba(217,119,6,0.1); border-color:rgba(217,119,6,0.3); color:#d97706;">
+          <i class="fas fa-file-pdf"></i> Voir le document
+        </a>
       </div>
-      <div class="certif-kpi">
-        <span class="certif-kpi-val" style="color:var(--cert-cnil)">93%</span>
-        <div class="certif-kpi-lbl">moy. CNIL RGPD</div>
+
+      <!-- CNIL Module 1 -->
+      <div class="certif-doc-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="certif-doc-icon" style="background:rgba(192,57,43,0.12); border-color:rgba(192,57,43,0.25);">
+          <i class="fas fa-shield-alt" style="color:#c0392b;"></i>
+        </div>
+        <div class="certif-doc-badge status-ok">Validé</div>
+        <h3 class="certif-doc-name">Atelier RGPD – Module 1</h3>
+        <p class="certif-doc-sub">Le RGPD et ses notions clés</p>
+        <div class="certif-doc-meta">
+          <span><i class="fas fa-star" style="color:#22c55e;"></i> Score : <strong style="color:#22c55e;">100%</strong></span>
+          <span><i class="fas fa-calendar"></i> 10 sept. 2024</span>
+        </div>
+        <a href="MODULE_1___LE_RGPD_ET_SES_NOTIONS_CL%C3%89S_Attestation_du_Module_1.pdf" target="_blank" class="certif-doc-btn" style="background:rgba(192,57,43,0.1); border-color:rgba(192,57,43,0.3); color:#c0392b;">
+          <i class="fas fa-file-pdf"></i> Voir le document
+        </a>
       </div>
+
+      <!-- CNIL Module 3 -->
+      <div class="certif-doc-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="certif-doc-icon" style="background:rgba(192,57,43,0.12); border-color:rgba(192,57,43,0.25);">
+          <i class="fas fa-users-cog" style="color:#c0392b;"></i>
+        </div>
+        <div class="certif-doc-badge status-ok">Validé</div>
+        <h3 class="certif-doc-name">Atelier RGPD – Module 3</h3>
+        <p class="certif-doc-sub">Les responsabilités des acteurs</p>
+        <div class="certif-doc-meta">
+          <span><i class="fas fa-star" style="color:#d97706;"></i> Score : <strong style="color:#d97706;">93%</strong></span>
+          <span><i class="fas fa-calendar"></i> 24 sept. 2024</span>
+        </div>
+        <a href="MODULE_3___LES_RESPONSABILITES_DES_ACTEURS_Attestation_du_Module_3__1_.pdf" target="_blank" class="certif-doc-btn" style="background:rgba(192,57,43,0.1); border-color:rgba(192,57,43,0.3); color:#c0392b;">
+          <i class="fas fa-file-pdf"></i> Voir le document
+        </a>
+      </div>
+
+      <!-- CNIL Module 4 -->
+      <div class="certif-doc-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="certif-doc-icon" style="background:rgba(192,57,43,0.12); border-color:rgba(192,57,43,0.25);">
+          <i class="fas fa-clipboard-check" style="color:#c0392b;"></i>
+        </div>
+        <div class="certif-doc-badge status-ok">Validé</div>
+        <h3 class="certif-doc-name">Atelier RGPD – Module 4</h3>
+        <p class="certif-doc-sub">Le DPO et les outils de la conformité</p>
+        <div class="certif-doc-meta">
+          <span><i class="fas fa-star" style="color:#d97706;"></i> Score : <strong style="color:#d97706;">91%</strong></span>
+          <span><i class="fas fa-calendar"></i> 24 sept. 2024</span>
+        </div>
+        <a href="MODULE_4___LE_DPO_ET_LES_OUTILS_DE_LA_CONFORMIT%C3%89_Attestation_du_Module_4.pdf" target="_blank" class="certif-doc-btn" style="background:rgba(192,57,43,0.1); border-color:rgba(192,57,43,0.3); color:#c0392b;">
+          <i class="fas fa-file-pdf"></i> Voir le document
+        </a>
+      </div>
+
+      <!-- CNIL Module 5 -->
+      <div class="certif-doc-card" data-aos="fade-up" data-aos-delay="240">
+        <div class="certif-doc-icon" style="background:rgba(192,57,43,0.12); border-color:rgba(192,57,43,0.25);">
+          <i class="fas fa-landmark" style="color:#c0392b;"></i>
+        </div>
+        <div class="certif-doc-badge status-ok">Validé</div>
+        <h3 class="certif-doc-name">Atelier RGPD – Module 5</h3>
+        <p class="certif-doc-sub">Les collectivités territoriales</p>
+        <div class="certif-doc-meta">
+          <span><i class="fas fa-star" style="color:#d97706;"></i> Score : <strong style="color:#d97706;">88%</strong></span>
+          <span><i class="fas fa-calendar"></i> 24 sept. 2024</span>
+        </div>
+        <a href="MODULE_5___LES_COLLECTIVIT%C3%89S_TERRITORIALES_Attestation_du_Module_5.pdf" target="_blank" class="certif-doc-btn" style="background:rgba(192,57,43,0.1); border-color:rgba(192,57,43,0.3); color:#c0392b;">
+          <i class="fas fa-file-pdf"></i> Voir le document
+        </a>
+      </div>
+
+    </div><!-- /.certif-doc-grid -->
+
+    <!-- Note upload -->
+    <div style="margin-top:32px; padding:16px 20px; background:rgba(99,102,241,0.08); border:1px solid rgba(99,102,241,0.2); border-radius:10px; font-size:0.85rem; color:var(--text-muted);" data-aos="fade-up">
+      <i class="fas fa-info-circle" style="color:var(--accent);"></i>
+      Code de vérification PIX : <code style="font-family:'JetBrains Mono',monospace; background:rgba(255,255,255,0.06); padding:2px 7px; border-radius:4px; color:var(--text-main);">P-B42CWMW3</code>
+      — vérifiable sur <a href="https://app.pix.fr/verification-certificat" target="_blank" style="color:var(--accent);">app.pix.fr/verification-certificat</a>
     </div>
 
-    <div class="certif-grid">
-
-      <!-- ── AZ-900 ─────────────────────────────── -->
-      <div class="certif-card" data-aos="fade-up">
-        <div class="certif-top-bar bar-azure"></div>
-        <div class="certif-inner">
-          <div class="certif-head">
-            <div>
-              <div class="certif-org">Microsoft</div>
-              <div class="certif-name">AZ-900 <span style="font-size:1rem;font-weight:400;color:var(--text-muted)">Azure Fundamentals</span></div>
-            </div>
-            <span class="certif-status status-wip">En cours</span>
-          </div>
-
-          <div class="certif-stats">
-            <div class="certif-stat">
-              <span class="certif-stat-val val-azure">700</span>
-              <span class="certif-stat-lbl">Score min.</span>
-            </div>
-            <div class="certif-stat">
-              <span class="certif-stat-val val-azure">~165 €</span>
-              <span class="certif-stat-lbl">Prix examen</span>
-            </div>
-            <div class="certif-stat">
-              <span class="certif-stat-val val-azure">QCM</span>
-              <span class="certif-stat-lbl">Format</span>
-            </div>
-          </div>
-
-          <div class="az-progress-wrap">
-            <div class="az-progress-label">
-              <span>Préparation en cours</span>
-              <span style="color:var(--cert-azure); font-weight:700;">~60%</span>
-            </div>
-            <div class="az-progress-track">
-              <div class="az-progress-fill" id="azProgressFill"></div>
-            </div>
-          </div>
-
-          <p class="certif-desc">Valide les fondamentaux du cloud Microsoft Azure : IaaS, PaaS, SaaS, sécurité, gouvernance et modèles de tarification. Reconnue mondialement par les recruteurs IT.</p>
-
-          <hr class="certif-divider">
-          <div class="certif-footer">
-            <span class="certif-date"><i class="fas fa-calendar-alt"></i> Préparation en cours — 2026</span>
-            <a href="https://learn.microsoft.com/fr-fr/credentials/certifications/azure-fundamentals/" target="_blank" class="certif-verify">
-              <i class="fas fa-external-link-alt"></i> Microsoft Learn
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Root Me ────────────────────────────── -->
-      <div class="certif-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="certif-top-bar bar-rootme"></div>
-        <div class="certif-inner">
-          <div class="certif-head">
-            <div>
-              <div class="certif-org">Root Me · Communauté FR</div>
-              <div class="certif-name">Cybersécurité</div>
-            </div>
-            <span class="certif-status status-ok">Validé</span>
-          </div>
-
-          <div class="certif-stats">
-            <div class="certif-stat">
-              <span class="certif-stat-val val-rootme">200</span>
-              <span class="certif-stat-lbl">Points</span>
-            </div>
-            <div class="certif-stat">
-              <span class="certif-stat-val val-rootme">15</span>
-              <span class="certif-stat-lbl">Challenges</span>
-            </div>
-            <div class="certif-stat">
-              <span class="certif-stat-val val-rootme">100%</span>
-              <span class="certif-stat-lbl">Réussite</span>
-            </div>
-          </div>
-
-          <div class="rootme-cats">
-            <span class="rootme-cat"><i class="fas fa-lock"></i> Cryptanalyse <span class="rootme-cat-pts">75 pts · 7/7</span></span>
-            <span class="rootme-cat"><i class="fas fa-globe"></i> Web Client <span class="rootme-cat-pts">55 pts · 3/3</span></span>
-            <span class="rootme-cat"><i class="fas fa-server"></i> Web Serveur <span class="rootme-cat-pts">50 pts · 4/4</span></span>
-            <span class="rootme-cat"><i class="fas fa-code"></i> Programmation <span class="rootme-cat-pts">20 pts · 1/1</span></span>
-          </div>
-
-          <p class="certif-desc">Plateforme française de référence en hacking éthique. 100% de complétion sur chaque catégorie abordée. Profil public vérifiable.</p>
-
-          <hr class="certif-divider">
-          <div class="certif-footer">
-            <span class="certif-date"><i class="fas fa-user"></i> AITCHAIB Dalil</span>
-            <a href="https://www.root-me.org/AITCHAIB-Dalil" target="_blank" class="certif-verify">
-              <i class="fas fa-external-link-alt"></i> Voir le profil
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── PIX ───────────────────────────────── -->
-      <div class="certif-card" data-aos="fade-up" data-aos-delay="150">
-        <div class="certif-top-bar bar-pix"></div>
-        <div class="certif-inner">
-          <div class="certif-head">
-            <div>
-              <div class="certif-org">GIP PIX · Éducation Nationale</div>
-              <div class="certif-name">Certification PIX</div>
-            </div>
-            <span class="certif-status status-ok">Validé</span>
-          </div>
-
-          <div class="pix-score-wrap">
-            <!-- Hexagone PIX -->
-            <div class="pix-hex">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5" stroke="#d97706" stroke-width="4" fill="rgba(217,119,6,0.08)"/>
-              </svg>
-              <div class="pix-hex-inner">
-                <span class="pix-pts">604</span>
-                <span class="pix-total">/ 895</span>
-              </div>
-            </div>
-            <div>
-              <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:8px;">Niveau global</div>
-              <span class="pix-level-tag">Avancé 1</span>
-              <div style="font-size:0.78rem;color:var(--text-muted);margin-top:10px;">Lycée Georges Brassens</div>
-            </div>
-          </div>
-
-          <p class="certif-desc">Niveau <strong style="color:#d97706">Avancé 1</strong> : pratiques numériques avancées, capable de faire face seul à des situations nouvelles et d'aider d'autres personnes. Couvre 5 domaines : information, communication, création, sécurité, environnement numérique.</p>
-
-          <hr class="certif-divider">
-          <div class="certif-footer">
-            <span class="certif-date"><i class="fas fa-calendar-alt"></i> 30/03/2026</span>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-              <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-muted);background:rgba(255,255,255,0.05);padding:4px 8px;border-radius:4px;border:1px solid var(--border)">P-B42CWMW3</span>
-              <a href="https://app.pix.fr/verification-certificat" target="_blank" class="certif-verify">
-                <i class="fas fa-shield-alt"></i> Vérifier
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── CNIL RGPD ──────────────────────────── -->
-      <div class="certif-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="certif-top-bar bar-cnil"></div>
-        <div class="certif-inner">
-          <div class="certif-head">
-            <div>
-              <div class="certif-org">CNIL · L'Atelier RGPD</div>
-              <div class="certif-name">RGPD <span style="font-size:1rem;font-weight:400;color:var(--text-muted)">4 modules</span></div>
-            </div>
-            <span class="certif-status status-ok">Validé</span>
-          </div>
-
-          <div class="certif-stats">
-            <div class="certif-stat">
-              <span class="certif-stat-val val-cnil">93%</span>
-              <span class="certif-stat-lbl">Moy. générale</span>
-            </div>
-            <div class="certif-stat">
-              <span class="certif-stat-val val-cnil">4/5</span>
-              <span class="certif-stat-lbl">Modules</span>
-            </div>
-            <div class="certif-stat">
-              <span class="certif-stat-val" style="color:#22c55e">100%</span>
-              <span class="certif-stat-lbl">Module 1</span>
-            </div>
-          </div>
-
-          <div class="cnil-modules">
-            <div class="cnil-module">
-              <span class="cnil-module-name">Module 1 — Le RGPD et ses notions clés</span>
-              <span class="cnil-module-score perfect">100%</span>
-            </div>
-            <div class="cnil-module">
-              <span class="cnil-module-name">Module 3 — Responsabilités des acteurs</span>
-              <span class="cnil-module-score">93%</span>
-            </div>
-            <div class="cnil-module">
-              <span class="cnil-module-name">Module 4 — Le DPO & outils conformité</span>
-              <span class="cnil-module-score">91%</span>
-            </div>
-            <div class="cnil-module">
-              <span class="cnil-module-name">Module 5 — Les collectivités territoriales</span>
-              <span class="cnil-module-score">88%</span>
-            </div>
-          </div>
-
-          <p class="certif-desc">Formation officielle de la CNIL sur le RGPD. Attestations officielles émises. Directement applicable en stage et en alternance dans les métiers IT & data.</p>
-
-          <hr class="certif-divider">
-          <div class="certif-footer">
-            <span class="certif-date"><i class="fas fa-calendar-alt"></i> Sept. 2024 · Attestations officielles CNIL</span>
-            <a href="https://www.cnil.fr/fr/le-rgpd-cest-quoi" target="_blank" class="certif-verify">
-              <i class="fas fa-external-link-alt"></i> CNIL.fr
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /.certif-grid -->
   </section>
 
   <section id="veille" class="container">
